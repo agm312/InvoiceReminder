@@ -2,6 +2,19 @@
   publish = "."
   command = "echo 'No build step required'"
 
+# Serve sitemap.xml directly
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/sitemap.xml"
+  status = 200
+
+# Serve robots.txt directly
+[[redirects]]
+  from = "/robots.txt"
+  to = "/robots.txt"
+  status = 200
+
+# Catch-all redirect for SPA
 [[redirects]]
   from = "/*"
   to = "/index.html"
