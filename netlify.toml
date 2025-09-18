@@ -1,0 +1,22 @@
+[build]
+  publish = "."
+  command = "echo 'No build step required'"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[build.environment]
+  NODE_VERSION = "18"
+
+[functions]
+  directory = "netlify/functions"
+
+# Environment variables for Stripe and Firebase
+# Add these in your Netlify dashboard under Site settings > Environment variables
+# STRIPE_SECRET_KEY = "sk_test_..."
+# FIREBASE_PROJECT_ID = "your-project-id"
+# FIREBASE_CLIENT_EMAIL = "your-service-account@your-project.iam.gserviceaccount.com"
+# FIREBASE_PRIVATE_KEY = "-----BEGIN PRIVATE KEY-----\n..."
+# SITE_URL = "https://your-domain.netlify.app"
