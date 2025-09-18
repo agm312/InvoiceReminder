@@ -1,5 +1,16 @@
 {
+  "name": "invoice-reminder",
+  "version": "1.0.0",
+  "description": "Invoice Reminder app with CRM integration",
+  "main": "index.html",
+  "dependencies": {
+    "stripe": "^14.0.0",
+    "firebase-admin": "^12.0.0"
+  },
   "devDependencies": {
     "netlify-cli": "^23.5.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }

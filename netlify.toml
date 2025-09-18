@@ -13,6 +13,10 @@
 [functions]
   directory = "netlify/functions"
 
+# Netlify plugin to install function dependencies
+[[plugins]]
+  package = "@netlify/plugin-functions-install-core"
+
 # Environment variables for Stripe and Firebase
 # Add these in your Netlify dashboard under Site settings > Environment variables
 # STRIPE_SECRET_KEY = "sk_test_..."
