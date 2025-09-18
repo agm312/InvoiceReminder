@@ -45,6 +45,11 @@
   to = "/index.html#dashboard"
   status = 200
 
+[[redirects]]
+  from = "/sms-usage"
+  to = "/index.html#sms-usage"
+  status = 200
+
 # Catch-all redirect for SPA
 [[redirects]]
   from = "/*"
