@@ -4,6 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invoice Reminder</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Automate your invoice reminders with email and SMS. Track payments, manage clients, and never miss a payment again. Free plan available.">
+    <meta name="keywords" content="invoice reminder, payment tracking, SMS reminders, email automation, client management, billing software">
+    <meta name="author" content="InvoiceReminder.xyz">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Invoice Reminder - Never Miss a Payment Again">
+    <meta property="og:description" content="Automate your invoice reminders with email and SMS. Track payments, manage clients, and never miss a payment again.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://invoicereminder.xyz">
+    <meta property="og:site_name" content="Invoice Reminder">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Invoice Reminder - Never Miss a Payment Again">
+    <meta name="twitter:description" content="Automate your invoice reminders with email and SMS. Track payments, manage clients, and never miss a payment again.">
+    
+    <!-- Canonical URL (will be updated dynamically) -->
+    <link rel="canonical" href="https://invoicereminder.xyz/" id="canonical-link">
     <!-- Tailwind CSS - CDN version (production warning suppressed) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -838,6 +858,9 @@
             const path = window.location.pathname;
             const hash = window.location.hash;
             
+            // Update canonical URL based on current path
+            updateCanonicalUrl(path);
+            
             // Handle direct URL access (e.g., /pricing, /terms, etc.)
             switch (path) {
                 case '/pricing':
@@ -891,6 +914,16 @@
                         showView('mainView');
                     }
                     break;
+            }
+        };
+
+        // Update canonical URL for SEO
+        const updateCanonicalUrl = (path) => {
+            const canonicalLink = document.getElementById('canonical-link');
+            if (canonicalLink) {
+                const baseUrl = 'https://invoicereminder.xyz';
+                const canonicalUrl = path === '/' ? baseUrl : `${baseUrl}${path}`;
+                canonicalLink.href = canonicalUrl;
             }
         };
 

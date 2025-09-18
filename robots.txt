@@ -1,15 +1,27 @@
+# Robots.txt for InvoiceReminder.xyz
+# https://invoicereminder.xyz/robots.txt
+
 User-agent: *
 Allow: /
 
 # Sitemap location
 Sitemap: https://invoicereminder.xyz/sitemap.xml
 
-# Disallow admin or sensitive areas (if any)
+# Disallow admin or sensitive areas
 Disallow: /admin/
 Disallow: /private/
 Disallow: /api/
+Disallow: /netlify/
+Disallow: /.git/
 
-# Allow all other content
-Allow: /index.html
-Allow: /sitemap.xml
-Allow: /robots.txt
+# Allow important pages
+Allow: /pricing
+Allow: /terms
+Allow: /privacy
+Allow: /billing
+Allow: /crm
+Allow: /dashboard
+Allow: /sms-usage
+
+# Crawl delay (optional - helps prevent overloading)
+Crawl-delay: 1
