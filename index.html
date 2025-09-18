@@ -176,7 +176,7 @@
                         <!-- FAQ Item -->
                         <div class="faq-item bg-white rounded-lg shadow-sm"><button class="faq-question flex justify-between items-center w-full p-6 text-left"><span class="font-semibold text-slate-800">Who is this for?</span><i data-lucide="chevron-down" class="transition-transform duration-300"></i></button><div class="faq-answer"><p class="text-slate-600 text-sm">It's built for freelancers, small businesses, agencies, and finance teams who want to save time and improve cash flow.</p></div></div>
                         <!-- FAQ Item -->
-                        <div class="faq-item bg-white rounded-lg shadow-sm"><button class="faq-question flex justify-between items-center w-full p-6 text-left"><span class="font-semibold text-slate-800">Can I send both email and SMS reminders?</span><i data-lucide="chevron-down" class="transition-transform duration-300"></i></button><div class="faq-answer"><p class="text-slate-600 text-sm">Yes, our Pro and Business plans allow you to send automated reminders via email, SMS, or both simultaneously.</p></div></div>
+                        <div class="faq-item bg-white rounded-lg shadow-sm"><button class="faq-question flex justify-between items-center w-full p-6 text-left"><span class="font-semibold text-slate-800">Can I send both email and SMS reminders?</span><i data-lucide="chevron-down" class="transition-transform duration-300"></i></button><div class="faq-answer"><p class="text-slate-600 text-sm">Yes, our Platinum plan allow you to send automated reminders via email, SMS, or both simultaneously.</p></div></div>
                         <!-- FAQ Item -->
                         <div class="faq-item bg-white rounded-lg shadow-sm"><button class="faq-question flex justify-between items-center w-full p-6 text-left"><span class="font-semibold text-slate-800">How do automated follow-up sequences work?</span><i data-lucide="chevron-down" class="transition-transform duration-300"></i></button><div class="faq-answer"><p class="text-slate-600 text-sm">You set the schedule for reminders (e.g., 7 days before due, on the due date, and weekly after). Once an invoice is marked as paid, the sequence stops automatically. This is a Pro feature.</p></div></div>
 
@@ -369,6 +369,129 @@
             </div>
         </div>
 
+        <!-- View: SMS Usage Information Page -->
+        <div id="smsUsageView" class="hidden bg-slate-50 min-h-screen">
+            <header class="bg-white shadow-sm">
+                <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex justify-between items-center h-16">
+                        <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                            <i data-lucide="bell" class="w-6 h-6 text-indigo-600 cursor-pointer hover:text-indigo-800 transition-colors" onclick="showView('mainView')" title="Go to Dashboard"></i>
+                            💎 Platinum Plan - SMS Usage Information
+                        </h2>
+                        <button onclick="showView('billingView')" class="text-sm font-semibold text-indigo-600 hover:text-indigo-800 flex items-center gap-1">
+                            <i data-lucide="arrow-left" class="w-4 h-4"></i> Back to Billing
+                        </button>
+                    </div>
+                </div>
+            </header>
+            
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <div class="text-center mb-12">
+                    <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mb-6">
+                        <span class="text-3xl">💎</span>
+                    </div>
+                    <h1 class="text-4xl font-bold text-slate-900 mb-4">Platinum Plan</h1>
+                    <p class="text-xl text-slate-600 mb-8">Unlock unlimited SMS reminders and premium features</p>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg p-8 mb-8">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-6">SMS Usage Information</h2>
+                    <p class="text-slate-600 mb-6">To upgrade to our Diamond Platinum plan, please provide us with information about your SMS usage needs. This helps us customize the perfect plan for your business.</p>
+                    
+                    <form id="smsUsageForm" name="platinum-plan-inquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-6">
+                        <!-- Hidden fields for Netlify Forms -->
+                        <input type="hidden" name="form-name" value="platinum-plan-inquiry">
+                        <input type="hidden" name="_subject" value="New Platinum Plan Inquiry">
+                        <input type="hidden" name="_replyto" value="">
+                        <div style="display: none;">
+                            <label>Don't fill this out if you're human: <input name="bot-field"></label>
+                        </div>
+                        
+                        <div>
+                            <label for="businessName" class="block text-sm font-medium text-slate-700 mb-2">Business Name</label>
+                            <input type="text" id="businessName" name="businessName" required class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="Enter your business name">
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-slate-700 mb-2">Email Address</label>
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="Enter your email address" onchange="document.querySelector('input[name=_replyto]').value = this.value">
+                        </div>
+                        
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-slate-700 mb-2">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="Enter your phone number">
+                        </div>
+                        
+                        <div>
+                            <label for="monthlyInvoices" class="block text-sm font-medium text-slate-700 mb-2">Estimated Monthly Invoices</label>
+                            <select id="monthlyInvoices" name="monthlyInvoices" required class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                                <option value="">Select range</option>
+                                <option value="1-10">1-10 invoices</option>
+                                <option value="11-50">11-50 invoices</option>
+                                <option value="51-100">51-100 invoices</option>
+                                <option value="101-500">101-500 invoices</option>
+                                <option value="500+">500+ invoices</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="smsFrequency" class="block text-sm font-medium text-slate-700 mb-2">SMS Reminder Frequency</label>
+                            <select id="smsFrequency" name="smsFrequency" required class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                                <option value="">Select frequency</option>
+                                <option value="daily">Daily reminders</option>
+                                <option value="weekly">Weekly reminders</option>
+                                <option value="monthly">Monthly reminders</option>
+                                <option value="custom">Custom schedule</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="additionalInfo" class="block text-sm font-medium text-slate-700 mb-2">Additional Information</label>
+                            <textarea id="additionalInfo" name="additionalInfo" rows="4" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="Tell us about your specific SMS needs, any special requirements, or questions you have..."></textarea>
+                        </div>
+                        
+                        <div class="bg-gradient-to-r from-purple-50 to-pink-50 border border-purple-200 rounded-lg p-6">
+                            <h3 class="text-lg font-semibold text-slate-900 mb-3">💎 Platinum Benefits</h3>
+                            <ul class="space-y-2 text-slate-700">
+                                <li class="flex items-center gap-2">
+                                    <i data-lucide="check" class="w-5 h-5 text-purple-500"></i>
+                                    Unlimited SMS reminders
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i data-lucide="check" class="w-5 h-5 text-purple-500"></i>
+                                    Priority customer support
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i data-lucide="check" class="w-5 h-5 text-purple-500"></i>
+                                    Custom SMS templates
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i data-lucide="check" class="w-5 h-5 text-purple-500"></i>
+                                    Advanced analytics & reporting
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i data-lucide="check" class="w-5 h-5 text-purple-500"></i>
+                                    White-label options
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="text-center">
+                            <button type="submit" class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                                <i data-lucide="send" class="w-5 h-5 mr-2"></i>
+                                Submit Information
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="text-center text-slate-500">
+                    <p class="mb-2">We'll review your information and contact you within 48 hours</p>
+                    <p class="text-sm">Questions? Contact us at <a href="mailto:support@invoicereminder.xyz" class="text-purple-600 hover:text-purple-800">support@invoicereminder.xyz</a></p>
+                </div>
+            </div>
+        </div>
+
         <!-- View: CRM Dashboard -->
         <div id="crmView" class="hidden bg-slate-50 min-h-screen">
             <header class="bg-white shadow-sm">
@@ -530,7 +653,6 @@
             <header class="bg-white shadow-sm"><div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex justify-between items-center h-16"><h2 class="text-xl font-bold text-slate-900">Privacy Policy</h2><button class="back-to-pricing-btn text-sm font-semibold text-indigo-600 hover:text-indigo-800 flex items-center gap-1"><i data-lucide="arrow-left" class="w-4 h-4"></i> Back to Pricing</button></div></div></header>
             <main class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
                 <div class="bg-white p-8 rounded-lg shadow-sm legal-content">
-                    <h1>Privacy Policy</h1>
                     <p><strong>Last Updated: September 17, 2025</strong></p>
                     <p><strong>InvoiceReminder.xyz</strong> ("us", "we", or "our") operates the Invoice Reminder website and application (the "Service"). This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service and the choices you have associated with that data.</p>
                     <p>We use your data to provide and improve the Service. By using the Service, you agree to the collection and use of information in accordance with this policy.</p>
@@ -686,7 +808,7 @@
         // --- Utility & View Functions ---
         const showView = (viewId) => {
             // Hide all views first
-            const views = ['mainView', 'pricingView', 'messageDetailView', 'termsView', 'privacyView', 'billingView', 'crmView'];
+            const views = ['mainView', 'pricingView', 'messageDetailView', 'termsView', 'privacyView', 'billingView', 'crmView', 'smsUsageView'];
             views.forEach(view => {
                 const element = document.getElementById(view);
                 if (element) {
@@ -710,6 +832,70 @@
 
         // Make showView globally available for onclick attributes
         window.showView = showView;
+
+        // SMS Usage Page Functions
+        const showSmsUsagePage = () => {
+            showView('smsUsageView');
+        };
+
+        // Make showSmsUsagePage globally available for onclick attributes
+        window.showSmsUsagePage = showSmsUsagePage;
+
+        // Handle SMS usage form submission
+        const handleSmsUsageForm = async (event) => {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const data = {
+                businessName: formData.get('businessName'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                monthlyInvoices: formData.get('monthlyInvoices'),
+                smsFrequency: formData.get('smsFrequency'),
+                additionalInfo: formData.get('additionalInfo'),
+                timestamp: new Date().toISOString(),
+                userAgent: navigator.userAgent
+            };
+
+            try {
+                // Show loading state
+                const submitBtn = event.target.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i data-lucide="loader-2" class="w-5 h-5 mr-2 animate-spin"></i>Submitting...';
+                submitBtn.disabled = true;
+
+                // Submit to Netlify Forms
+                const response = await fetch('/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams(formData).toString()
+                });
+
+                if (response.ok) {
+                    // Show success message
+                    showToast('Information submitted successfully! We\'ll contact you within 48 hours.', 'check-circle', 'text-green-400');
+                    
+                    // Reset form
+                    event.target.reset();
+                    
+                    // Go back to billing page
+                    setTimeout(() => {
+                        showView('billingView');
+                    }, 2000);
+                } else {
+                    throw new Error('Form submission failed');
+                }
+
+            } catch (error) {
+                console.error('Error submitting SMS usage form:', error);
+                showToast('Failed to submit information. Please try again.', 'alert-circle', 'text-red-400');
+            } finally {
+                // Reset button
+                const submitBtn = event.target.querySelector('button[type="submit"]');
+                submitBtn.innerHTML = '<i data-lucide="send" class="w-5 h-5 mr-2"></i>Submit Information';
+                submitBtn.disabled = false;
+            }
+        };
 
         // Helper function to format date for email (clear and consistent format)
         const formatDateForEmail = (dateString) => {
@@ -1779,11 +1965,16 @@
             // Update plan status
             document.getElementById('planStatusDisplay').textContent = planDisplayName;
             
-            // Update premium badge
+            // Update premium badge - Replace Business Plan with Diamond Platinum button
             const premiumBadge = document.getElementById('premiumBadge');
             if (hasPremium || userPlan !== 'free') {
-                premiumBadge.textContent = `${planName} Plan`;
-                premiumBadge.className = "px-3 py-1 rounded-full text-sm bg-emerald-100 text-emerald-700";
+                if (userPlan === 'business') {
+                    // Replace Business Plan with Diamond Platinum button
+                    premiumBadge.innerHTML = '<button onclick="showSmsUsagePage()" class="px-3 py-1 rounded-full text-sm bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105 shadow-lg">💎 Platinum Plan</button>';
+                } else {
+                    premiumBadge.textContent = `${planName} Plan`;
+                    premiumBadge.className = "px-3 py-1 rounded-full text-sm bg-emerald-100 text-emerald-700";
+                }
             } else {
                 premiumBadge.textContent = "Free Plan";
                 premiumBadge.className = "px-3 py-1 rounded-full text-sm bg-gray-100 text-gray-700";
@@ -2932,6 +3123,12 @@
             const viewPlansBtn = document.getElementById('viewPlansBtn');
             if (viewPlansBtn) {
                 viewPlansBtn.addEventListener('click', () => showView('pricingView'));
+            }
+            
+            // Add event listener for SMS usage form
+            const smsUsageForm = document.getElementById('smsUsageForm');
+            if (smsUsageForm) {
+                smsUsageForm.addEventListener('submit', handleSmsUsageForm);
             }
 
             // CRM Button handlers
