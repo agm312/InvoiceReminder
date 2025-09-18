@@ -833,6 +833,74 @@
         // Make showView globally available for onclick attributes
         window.showView = showView;
 
+        // URL Routing for SEO-friendly URLs
+        const handleUrlRouting = () => {
+            const path = window.location.pathname;
+            const hash = window.location.hash;
+            
+            // Handle direct URL access (e.g., /pricing, /terms, etc.)
+            switch (path) {
+                case '/pricing':
+                    showView('pricingView');
+                    break;
+                case '/terms':
+                    showView('termsView');
+                    break;
+                case '/privacy':
+                    showView('privacyView');
+                    break;
+                case '/billing':
+                    showView('billingView');
+                    loadBillingSettings();
+                    break;
+                case '/crm':
+                    showView('crmView');
+                    loadCrmDashboard();
+                    break;
+                case '/dashboard':
+                    showView('mainView');
+                    break;
+                default:
+                    // Handle hash-based navigation (existing functionality)
+                    if (hash) {
+                        const viewMap = {
+                            '#pricing': 'pricingView',
+                            '#terms': 'termsView',
+                            '#privacy': 'privacyView',
+                            '#billing': 'billingView',
+                            '#crm': 'crmView',
+                            '#dashboard': 'mainView',
+                            '#sms-usage': 'smsUsageView'
+                        };
+                        
+                        const targetView = viewMap[hash];
+                        if (targetView) {
+                            showView(targetView);
+                            // Load specific data if needed
+                            if (targetView === 'billingView') {
+                                loadBillingSettings();
+                            } else if (targetView === 'crmView') {
+                                loadCrmDashboard();
+                            }
+                        }
+                    } else {
+                        // Default to main view
+                        showView('mainView');
+                    }
+                    break;
+            }
+        };
+
+        // Initialize URL routing on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            handleUrlRouting();
+        });
+
+        // Handle browser back/forward navigation
+        window.addEventListener('popstate', () => {
+            handleUrlRouting();
+        });
+
         // SMS Usage Page Functions
         const showSmsUsagePage = () => {
             showView('smsUsageView');

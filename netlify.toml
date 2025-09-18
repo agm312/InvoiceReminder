@@ -14,6 +14,37 @@
   to = "/robots.txt"
   status = 200
 
+# Specific page redirects for SEO-friendly URLs
+[[redirects]]
+  from = "/pricing"
+  to = "/index.html#pricing"
+  status = 200
+
+[[redirects]]
+  from = "/terms"
+  to = "/index.html#terms"
+  status = 200
+
+[[redirects]]
+  from = "/privacy"
+  to = "/index.html#privacy"
+  status = 200
+
+[[redirects]]
+  from = "/billing"
+  to = "/index.html#billing"
+  status = 200
+
+[[redirects]]
+  from = "/crm"
+  to = "/index.html#crm"
+  status = 200
+
+[[redirects]]
+  from = "/dashboard"
+  to = "/index.html#dashboard"
+  status = 200
+
 # Catch-all redirect for SPA
 [[redirects]]
   from = "/*"
